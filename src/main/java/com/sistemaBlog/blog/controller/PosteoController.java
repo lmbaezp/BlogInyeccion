@@ -38,7 +38,7 @@ public class PosteoController {
     public ResponseEntity<String> guardarPost(@RequestBody Posteo post) {
         try {
             posteoService.guardarPost(post);
-            return ResponseEntity.ok("Persona fue agregada con éxito");
+            return ResponseEntity.ok("Post fue agregado con éxito");
         } catch (
                 IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
