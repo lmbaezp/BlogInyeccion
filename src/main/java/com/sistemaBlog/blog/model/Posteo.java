@@ -1,6 +1,14 @@
 package com.sistemaBlog.blog.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Posteo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String autor;
@@ -8,7 +16,7 @@ public class Posteo {
     public Posteo() {
     }
 
-    public Posteo(String titulo, String autor) {
+    public Posteo(Long id, String titulo, String autor) {
         setTitulo(titulo);
         setAutor(autor);
     }
@@ -30,11 +38,7 @@ public class Posteo {
     }
 
     public void setTitulo(String titulo) {
-        if (titulo == null || titulo.isEmpty()) {
-            throw new IllegalArgumentException("El título del post no puede estar vacío");
-        } else {
-            this.titulo = titulo;
-        }
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -42,10 +46,7 @@ public class Posteo {
     }
 
     public void setAutor(String autor) {
-        if (autor == null || autor.isEmpty()) {
-            throw new IllegalArgumentException("El autor del post no puede estar vacío");
-        } else {
-            this.autor = autor;
-        }
+        this.autor = autor;
     }
+
 }
