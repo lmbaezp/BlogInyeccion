@@ -12,15 +12,15 @@
 //
 //    public PosteoRepository() {
 //        Posteo posteo1 = new Posteo("Post 1", "Autor 1");
-//        posteo1.setId(1L);
+//        posteo1.setId_autor(1L);
 //        Posteo posteo2 = new Posteo("Post 2", "Autor 2");
-//        posteo2.setId(2L);
+//        posteo2.setId_autor(2L);
 //        Posteo posteo3 = new Posteo("Post 3", "Autor 3");
-//        posteo3.setId(3L);
+//        posteo3.setId_autor(3L);
 //        Posteo posteo4 = new Posteo("Post 4", "Autor 4");
-//        posteo4.setId(4L);
+//        posteo4.setId_autor(4L);
 //        Posteo posteo5 = new Posteo("Post 5", "Autor 5");
-//        posteo5.setId(5L);
+//        posteo5.setId_autor(5L);
 //
 //        posts.add(posteo1);
 //        posts.add(posteo2);
@@ -37,7 +37,7 @@
 //    @Override
 //    public Posteo findById(Long id) {
 //        for (Posteo post : posts) {
-//            if(post.getId().equals(id)){
+//            if(post.getId_autor().equals(id)){
 //                return post;
 //            }
 //        }
@@ -48,11 +48,11 @@
 //    public void save(Posteo post) {
 //        Long maxId = 0L;
 //        for (Posteo p : posts) {
-//            if (p.getId() > maxId) {
-//                maxId = p.getId();
+//            if (p.getId_autor() > maxId) {
+//                maxId = p.getId_autor();
 //            }
 //        }
-//        post.setId(maxId + 1);
+//        post.setId_autor(maxId + 1);
 //        posts.add(post);
 //    }
 //}

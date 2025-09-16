@@ -10,6 +10,6 @@ public interface IposteoService {
     Optional<Posteo> obtenerPostPorId(Long id);
     void guardarPost(Posteo post);
     void actualizarPost(Long id, Posteo posteoNuevo);
-    void actualizarPartesPost(Long id, Posteo posteoNuevo);
     void borrarPost(Long id);
+    void asignarComentarioAPost(Long id_comentario, Long id_post);
 }

@@ -73,7 +73,7 @@ public class PosteoController {
     @PatchMapping("/{id}")
     public ResponseEntity<String> actualizarParcial(@PathVariable Long id, @RequestBody Posteo post) {
         try {
-            posteoService.actualizarPartesPost(id, post);
+            posteoService.actualizarPost(id, post);
             return ResponseEntity.ok("Post actualizado con éxito");
         } catch (NoSuchElementException e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());

@@ -1,36 +1,45 @@
 package com.sistemaBlog.blog.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "posteos")
 public class Posteo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_post;
+    @NotNull(message = "El titulo del post no puede ser nulo")
+    @Column(name = "titulo", nullable = false)
     private String titulo;
-    private String autor;
+    @ManyToOne
+    @JoinColumn(name = "id_autor", nullable = false)
+    @JsonBackReference
+    private Autor autor;
+    @OneToMany(mappedBy = "id_post", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Comentario> comentarios = new ArrayList<>();
 
     public Posteo() {
     }
 
-    public Posteo(Long id, String titulo, String autor) {
-        setTitulo(titulo);
-        setAutor(autor);
+    public Posteo(String titulo, Autor autor, List<Comentario> comentarios) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.comentarios = comentarios;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId_post() {
+        return id_post;
     }
 
-    public void setId(Long id) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("ID inválido");
-        } else {
-            this.id = id;
-        }
+    public void setId_post(Long id_post) {
+        this.id_post = id_post;
     }
 
     public String getTitulo() {
@@ -41,12 +50,19 @@ public class Posteo {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 }

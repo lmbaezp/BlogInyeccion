@@ -9,7 +9,4 @@ import java.util.List;
 @Repository
 public interface IposteoRepository extends JpaRepository<Posteo, Long> {
     boolean existsByTitulo(String titulo);
-//    List<Posteo> findAll();
-//    Posteo findById(Long id);
-//    void save(Posteo post);
 }
